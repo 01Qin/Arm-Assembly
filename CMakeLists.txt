@@ -8,7 +8,7 @@ include($ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake)
 set(PICO_BOARD pico_w)
 
 # Set name of project (as PROJECT_NAME) and C/C   standards
-project(exercise2 C CXX ASM)
+project(exercise3 C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
@@ -22,8 +22,8 @@ add_compile_options(-Wall
 )
 
 # Tell CMake where to find the executable source file
-add_executable(${PROJECT_NAME} 
-    exercise2.c
+add_executable(${PROJECT_NAME}
+        exercise3.c
 )
 
 # Create map/bin/hex/uf2 files
