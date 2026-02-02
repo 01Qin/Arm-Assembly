@@ -25,8 +25,11 @@ __attribute__(( naked )) void reverse(char *a)
 			"cmp r5, #'Z' \n"
 			"bgt check_lower \n"
 
-			"sub r6, r5, #'A' \n"
-			"rsb r6, r6, #'Z' \n"
+			"mov r6, r5 \n"
+			"sub r6, #'A' \n"
+			"mov r7, #'Z' \n"
+			"sub r7, r6 \n"
+			"mov r6, r7 \n"
 			"b wr_bk \n"
 
 			"check_lower: \n"
@@ -35,8 +38,11 @@ __attribute__(( naked )) void reverse(char *a)
 			"cmp r5, #'z' \n"
 			"bgt no_change \n"
 
-			"sub r6, r5, #'a' \n"
-			"rsb r6, r6, #'z' \n"
+			"mov r6, r5 \n"
+			"sub r6, #'a' \n"
+			"mov r7, #'z' \n"
+			"sub r7, r6 \n"
+			"mov r6, r7 \n"
 			"b wr_bk \n"
 
 			"no_change: \n"
@@ -44,12 +50,12 @@ __attribute__(( naked )) void reverse(char *a)
 
 			"wr_bk: \n"
 			"strb r6, [r4] \n"
-			"add r4, r4, #1 \n"
+			"add r4, #1 \n"
 			"b rev_loop \n"
 			// r0 - r3 can be modified without preserving their original values
 			"rev_done: \n"
 			"pop { r4-r7, pc } \n" // cortex-M0 requires popping to PC if LR was pushed
-            "bx lr\n" // return to caller
+            // "bx lr\n" // return to caller
 	);
 }
 
@@ -120,3 +126,4 @@ int main(void) {
     }
 	return 0 ;
 }
+
