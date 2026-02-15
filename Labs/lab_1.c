@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 // opcodes
-// #define LOAD 1
+#define LOAD 1
 #define ADD 2
 #define STORE 3
 
