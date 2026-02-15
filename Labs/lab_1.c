@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 // opcodes
-#define LOAD 1
+// #define LOAD 1
 #define ADD 2
 #define STORE 3
 
@@ -16,13 +16,20 @@ int main() {
 
     // instructions: {opcode, operand}
     int instructions[][2] = {
-    {LOAD, 5}, // load 5 into accumulator
+    // {LOAD, 5}, // load 5 into accumulator
     {ADD, 10}, // add 10 to accumulator
     {STORE, 3} // store result
     };
 
     // e.g. sizeof(instructions) = 3 elements * (2 ints each) * 4 bytes = 24 bytes
     int instruction_count = sizeof(instructions) / sizeof(instructions[0]);
+
+    // get accumulator from user
+    printf("Enter initial accumulator value: ");
+    if (scanf("%d", &accumulator) != 1) {
+        printf("Invalid input! plese enter an integer.\n");
+        return 1;
+    }
     printf("Simulating Fetch-Decode-Execute Cycle:\n");
 
     while (pc < instruction_count) {
