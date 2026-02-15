@@ -9,10 +9,10 @@
 #define STORE 3
 
 int main() {
-    int accumulator = 0; // temporary storage
-    int pc = 0; // program counter
+    int accumulator = 0; // temporary storage, a single register to hold a number
+    int pc = 0; // program counter, which points to the current instruction
 
-    int memory[8] = {0};
+    int memory[8] = {0}; // a tiny ram with 8 slots, all initialised to 0
 
     // instructions: {opcode, operand}
     int instructions[][2] = {
@@ -21,6 +21,7 @@ int main() {
     {STORE, 3} // store result
     };
 
+    // e.g. sizeof(instructions) = 3 elements * (2 ints each) * 4 bytes = 24 bytes
     int instruction_count = sizeof(instructions) / sizeof(instructions[0]);
     printf("Simulating Fetch-Decode-Execute Cycle:\n");
 
@@ -52,7 +53,7 @@ int main() {
     }
     printf("Memory dump: ");
     for (size_t i = 0; i < sizeof(memory)/sizeof(memory[0]); ++i) {
-        printf("%d", memory[i]);
+        printf("%d ", memory[i]);
     }
     printf("\n");
     return 0;
