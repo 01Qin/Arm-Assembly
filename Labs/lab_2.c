@@ -6,17 +6,19 @@
 #define NUM_TASKS 3
 #define TIME_QUANTUM 2
 
+// Structure to represent a task
 typedef struct {
     int id;
-    int timeRequired;
-    int timeRemaining;
+    int timeRequired; // Total time required by the task
+    int timeRemaining; // Remaining time to complete the task
 } Task;
 
 int main() {
+    // Initialise tasks
     Task tasks[NUM_TASKS] = {
-        {1, 5, 5,},
-        {2, 8, 8},
-        {3, 6, 6}
+        {1, 5, 5,}, // Task 1: 5 units
+        {2, 8, 8}, // Task 2: 8 units
+        {3, 6, 6} // Task 3: 6 units
     };
 
     int tasksRemaining = NUM_TASKS;
@@ -24,6 +26,7 @@ int main() {
     printf("Round-Robin Scheduler Simulation\n");
     printf("--------------------------------\n");
 
+    // Round-robin scheduling
     while (tasksRemaining > 0) {
         for (int i = 0; i < NUM_TASKS; i++) {
             if(tasks[i].timeRemaining > 0) {
